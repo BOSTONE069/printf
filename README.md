@@ -474,11 +474,6 @@ Output:
 -9223372036854775808           -> LONG_MIN
 ```
 
-## Authors :black_nib:
-
-* Newton Ombese
-* Phoebe Ogallo 
-
 ## License :lock:
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
