@@ -1,50 +1,49 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
 
 /**
- * _printf - function that produces output according to a format
- * @format: type of argument passed to function
+ * _printf - prints anything
+ * @format: the format string
  *
- * Return: k, number of characters printed
+ * Return: number of bytes printed
  */
-
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int i, j, k, count;
-	var_t type[] = {
-		{"c", c_func}, {"s", s_func}, {"i", i_func}, {"%", perc_func},
-		{"d", d_func},	{"b", b_func},	{"r", rev_func}, {"R", rot_func},
-		{NULL, NULL},
-	};
+	int sum = 0;
+	va_list ap;
+	char *p, *start;
+	params_t params = PARAMS_INIT;
 
-	va_start(args, format);
-	i = 0, count = 0, k = 0;
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	va_start(ap, format);
+
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-	while (format && format[i])
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = (char *)format; *p; p++)
 	{
-		if (format[i] != '%')
-			_putchar(format[i]), k++;
-		else
+		init_params(&params, ap);
+		if (*p != '%')
 		{
-			j = 0;
-			while (type[j].vartype)
-			{
-				if (format[i + 1] == *type[j].vartype)
-				{
-					count += (type[j].f)(args), i++;
-					break;
-				}
-				j++;
-			}
-			if (type[j].vartype == NULL)
-				count += 1, _putchar('%');
+			sum += _putchar(*p);
+			continue;
 		}
-		i++;
+		start = p;
+		p++;
+		while (get_flag(p, &params)) /* while char at p is flag char */
+		{
+			p++; /* next char */
+		}
+		p = get_width(p, &params, ap);
+		p = get_precision(p, &params, ap);
+		if (get_modifier(p, &params))
+			p++;
+		if (!get_specifier(p))
+			sum += print_from_to(start, p,
+				params.l_modifier || params.h_modifier ? p - 1 : 0);
+		else
+			sum += get_print_func(p, ap, &params);
 	}
-	k += count;
-	va_end(args);
-	return (k);
+	_putchar(BUF_FLUSH);
+	va_end(ap);
+	return (sum);
 }
