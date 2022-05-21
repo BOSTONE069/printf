@@ -4,7 +4,7 @@ A formatted output conversion C program completed as part of the low-level
 programming and algorithm track at ALX . The program is a pseudo-
 recreation of the C standard library function, `printf`.
 
-## Dependencies :couple:
+## Dependencies
 
 The `_printf` function was coded on an Ubuntu 14.04 LTS machine with `gcc` version 4.8.4.
 
@@ -474,15 +474,12 @@ Output:
 -9223372036854775808           -> LONG_MIN
 ```
 
-## License :lock:
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Acknowledgements :pray:
 
 The `_printf` function emulates functionality of the C standard library
 function `printf`. This README borrows from the Linux man page
-[printf(3)](https://linux.die.net/man/3/printf).
+[printf(3)].
 
 ##WELCOME AND ENJOY
 All who come across are most welcome to revisiting our code over and over 
