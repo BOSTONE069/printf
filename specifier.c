@@ -8,6 +8,7 @@
  */
 int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
+/* array of functions for each format */
 	specifier_t specifiers[] = {
 		{"c", print_char},
 		{"d", print_int},
@@ -27,10 +28,13 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 	};
 	int i = 0;
 
+	/* as long as we do have a specifier */
 	while (specifiers[i].specifier)
 	{
+		/* spec[i].spec[0] == c,d,i,s,%, ... */
 		if (*s == specifiers[i].specifier[0])
 		{
+			/* call the function to handle this specifier */
 			return (specifiers[i].f);
 		}
 		i++;
