@@ -8,7 +8,7 @@ recreation of the C standard library function, `printf`.
 
 The `_printf` function was coded on an Ubuntu 14.04 LTS machine with `gcc` version 4.8.4.
 
-## Usage :running:
+## Usage 
 
 To use the `_printf` function, assuming the above dependencies have been installed,
 compile all `.c` files in the repository and include the header `main.h` with
@@ -28,12 +28,12 @@ int main(void)
 
 Compilation:
 ```
-$ gcc *.c -o tester
+$ gcc *.c -o main
 ```
 
 Output:
 ```
-$ ./tester
+$ ./main
 Hello, World!
 $
 ```
@@ -421,7 +421,7 @@ Francisco, CA 94103" where *street*, *city* and *state* are pointers to strings:
 
 Example `main.c`:
 ```
-#include "holberton.h"
+#include "main.h"
 
 int main(void)
 {
@@ -440,7 +440,7 @@ all numbers printed with a minimum precision of two digits:
 
 Example `main.c`:
 ```
-#include "holberton.h"
+#include "main.h"
 
 int main(void)
 {
